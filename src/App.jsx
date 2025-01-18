@@ -4,7 +4,7 @@ import ManagePost from "./components/ManagePosts";
 
 function App() {
   const [newPostAdded, setNewPostAdded] = useState(false);
-
+  console.log(newPostAdded);
   const handlePostAdded = () => {
     setNewPostAdded(!newPostAdded);
   };
@@ -14,7 +14,7 @@ function App() {
       <h1>Welcome Blog Post Admin</h1>
       <AddPost onPostAdded={handlePostAdded} />
 
-      <ManagePost />
+      <ManagePost newPostAdded={newPostAdded} />
     </div>
   );
 }

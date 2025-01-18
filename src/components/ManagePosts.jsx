@@ -3,22 +3,22 @@ import axios from "axios";
 import PostItem from "./PostItem";
 import EditPost from "./EditPost";
 
-const ManagePost = () => {
-  const [posts, setPosts] = useState([
-    { title: "t1", content: "content 1", id: 1 },
-    { title: "t2", content: "content 2", id: 2 },
-  ]);
+const ManagePost = ({ newPostAdded }) => {
+  const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
-
-  console.log("this is editinpost", editingPost);
 
   useEffect(() => {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    fetchPosts();
+  }, [newPostAdded]);
+
   const fetchPosts = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/posts");
+
       setPosts(response.data);
     } catch (error) {
       console.error(error);
@@ -28,7 +28,8 @@ const ManagePost = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("http://localhost:5000/api/posts/${id})");
+      await axios.delete(`http://localhost:5000/api/posts/${id}`);
+
       alert("Post delete successfully!");
       setPosts(posts.filter((post) => post._id !== id));
     } catch (error) {
