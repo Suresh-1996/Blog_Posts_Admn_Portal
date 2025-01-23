@@ -49,21 +49,22 @@ const ManagePost = ({ newPostAdded }) => {
     setEditingPost(null);
   };
   return (
-    <div>
-      <h2>Manage Posts</h2>
+    <>
       {editingPost ? (
         <EditPost post={editingPost} onPostUpdated={handlePostUpdated} />
       ) : (
-        posts.map((post) => (
-          <PostItem
-            key={post._id}
-            post={post}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
-        ))
+        <div className="grid md:grid-cols-2  lg:grid-cols-3">
+          {posts.map((post) => (
+            <PostItem
+              key={post._id}
+              post={post}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+          ))}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
