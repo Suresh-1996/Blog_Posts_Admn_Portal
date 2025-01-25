@@ -34,7 +34,7 @@ const AddPost = ({ onPostAdded }) => {
       setContent("");
       setImage(null);
 
-      onPostAdded();
+      onPostAdded(" ");
     } catch (error) {
       console.error(error);
       alert("Error adding post");
