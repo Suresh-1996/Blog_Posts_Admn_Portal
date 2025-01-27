@@ -16,9 +16,11 @@ const AdminLogin = () => {
         password,
       });
       alert("Login successful");
-      navigate("/Home");
-      localStorage.setItem("token", data.token);
+      navigate("/home");
+      localStorage.setItem("admin_token", data.token);
       localStorage.setItem("user_name", data.user.name);
+      const admit = localStorage.getItem("admin_token");
+      console.log(admit);
     } catch (error) {
       // console.error(error);
       alert("Invalid credentials");

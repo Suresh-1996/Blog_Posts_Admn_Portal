@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const CreateAdmin = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("admin_token");
+  console.log("admin token", token);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
